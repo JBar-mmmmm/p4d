@@ -66,11 +66,11 @@ function draw() {
         stroke('white');
         strokeWeight(10);
         strokeCap(SQUARE);
-        bezier(110 + dx, 215 + dy, 110 + dx, 110 + dy, 120 + dx, 102 + dy, 211 + dx, 102 + dy); //control points need editing
+        bezier(130 + dx, 255 + dy, 80 + dx, 170 + dy, 120 + dx, 102 + dy, 211 + dx, 102 + dy);
         noStroke();
         fill('white');
         triangle(110 + dx, 210 + dy, 80 + dx, 155 + dy, 120 + dx, 102 + dy);
-        rect(110 + dx, 108 + dy, 20, 12)
+        triangle(110 + dx, 108 + dy, 180 + dx, 100 + dy, 110 + dx, 145 + dy);
         stroke(0);
         strokeCap(ROUND);
         noFill();
@@ -83,6 +83,8 @@ function draw() {
         noStroke();
         quad(200 + dx, 400 + dy - cEdgeLength, 200 + dx, 390 + dy, 210 + dx, 390 + dy, 210 + dx, 420 + dy - cEdgeLength);
         stroke(0);
+        noFill();
+        bezier(121.5 + dx, 223 + dy, 100 + dx, 170 + dy, 120 + dx, 104 + dy, 211 + dx, 108 + dy);
         //C letter/trail redraw + trail additions
         line(200 + dx, 400 + dy - cEdgeLength, 200 + dx, 400 + dy);
         line(200 + dx, 400 + dy - cEdgeLength, 210 + dx, 420 + dy - cEdgeLength);
@@ -91,7 +93,7 @@ function draw() {
         line(200 + dx, cEdgeLength + dy, 205 + dx, 5 * 733 / 310 + cEdgeLength + dy);
     }
 
-    Logo(100 , 20, 0.7, 3);
+    Logo(100 , 100, 0.8, 3);
 }
 
 
