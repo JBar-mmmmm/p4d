@@ -2,7 +2,7 @@
     Paste the code for your week 5 exercise below.
 */
 function setup() {
-    createCanvas(750, 750);
+    createCanvas(760, 750);
     frameRate(60);
 }
 let x = 0;
@@ -14,6 +14,8 @@ let arrayCycle = 0;
 let currentArrayCycleCount = 1;
 let colour;
 console.log(currentArrayCycleCount);
+let meter = 0;
+let meterColour = 0;
 
 function draw() {
     rectMode(CENTER);
@@ -33,9 +35,18 @@ function boxes(xOffset, yOffset, boxSize) {
     if(x < 750 - 2 * (boxSize + xOffset)) { //fill column
         x = x + boxSize;
     }
-    if(x > 750 - 2 * (boxSize + xOffset)) { //next row
+    if(x > 750 - 2 * (boxSize + xOffset)) { //next row & meter
         x = 0;
         y = y + boxSize;
+        while(meter < y) {
+            if(meterColour % 2 == 0) {
+            fill('white');
+            } else {
+                fill('black');
+            }
+            rect(755, 750 + boxSize / 2 - yOffset - y, 10, boxSize);
+            meter = meter + boxSize;
+        }
     }
     if(y > 750 - 2 * (boxSize + yOffset)) { //cycle to next state
         x = 0;
@@ -46,5 +57,7 @@ function boxes(xOffset, yOffset, boxSize) {
         }
         currentArrayCycleCount = currentArrayCycleCount + 1;
         console.log(currentArrayCycleCount);
+        meter = 0;
+        meterColour = meterColour + 1;
     }
 }
