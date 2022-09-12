@@ -114,5 +114,5 @@ function draw() {
         Stroke();
     }
 
-    Logo(100 , 100, 0.8, 3);
+    Logo(100, 100, 0.8, 3);
 }
