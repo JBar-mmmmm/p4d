@@ -1,9 +1,13 @@
 /*
     Paste the code for your week 4 exercise below.
 */
+function preload() {
+   //let tFont = loadFont('assets/FunctionPro-Bold-webfont.ttf'); 
+}
+
 function setup() {
     createCanvas(750, 750);
-  }
+}
 
 function draw() {
     function Logo(dx, dy, scaleVal, sWeight) {
@@ -91,9 +95,24 @@ function draw() {
         line(210 + dx, 420 + dy - cEdgeLength, 210 + dx, 382 + dy);
         line(210 + dx, 382 + dy, 220 + dx, 400 + dy);
         line(200 + dx, cEdgeLength + dy, 205 + dx, 5 * 733 / 310 + cEdgeLength + dy);
+
+        //text
+        let t = ["ENGINEERING DISCOVERY", "CLOVIS BRAY", "EXOSCIENCE"];
+        textAlign(CENTER);
+        //textFont(tFont);
+        textFont('Helvetica');
+        noStroke();
+        textSize(scaleVal * 30);
+        fill(0);
+        text(t[0], 210 + dx, 450 + dy);
+        textSize(scaleVal * 95);
+        fill(142 ,201 ,215);
+        text(t[1], 210 + dx, 530 + dy);
+        textSize(scaleVal * 30);
+        fill(0);
+        text(t[2], 210 + dx, 570 + dy);
+        Stroke();
     }
 
     Logo(100 , 100, 0.8, 3);
 }
-
-
