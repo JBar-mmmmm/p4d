@@ -103,7 +103,7 @@ function Logo(dx, dy, scaleVal, sWeight) {
     let t = ["ENGINEERING DISCOVERY", "CLOVIS BRAY", "EXOSCIENCE"];
     textAlign(CENTER);
     let tFont = loadFont('assets/FunctionPro-Bold-webfont.ttf'); 
-    textFont(tFont);
+    //textFont(tFont);
     textFont('Helvetica');
     noStroke();
     textSize(scaleVal * 30);
