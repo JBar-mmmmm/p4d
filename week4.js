@@ -2,7 +2,7 @@
     Paste the code for your week 4 exercise below.
 */
 function preload() {
-   //let tFont = loadFont('assets/FunctionPro-Bold-webfont.ttf'); 
+   //let tFont = loadFont('assets/FunctionPro-Bold-webfont.ttf');
 }
 
 function setup() {
