@@ -12,6 +12,13 @@ let x = 0;
 let y = 0;
 let xMod = 2;
 let yMod = 2;
+let boxPos = {
+    x1: 300 / 2,
+    y1: 300 / 2,
+    z1: 0, //y displacement 
+}
+let boxSize = 50;
+let hitboxMod = 4 / 5;
 
 function draw() {
     ship();
@@ -19,20 +26,37 @@ function draw() {
 
 function ship() {
     background('white');
+    rectMode(CENTER);
+    rect(boxPos.x1, boxPos.y1 + boxPos.z1, boxSize);
     triangle(initialX + x, initialY + y, initialX + 15 + x, initialY + 30 + y, initialX - 15 + x, initialY + 30 + y);
+
+    //box falling
+    boxPos.z1 = boxPos.z1 +1;
+
+    //movement
     if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
-        x = x - 1 * xMod;
+        if (x > -700 / 2) {
+            x = x - 1 * xMod;
+        }
     }
     if (keyIsDown(RIGHT_ARROW) || keyIsDown(68)) {
-        x = x + 1 * xMod;
+        if (x < 700 / 2) {
+            x = x + 1 * xMod;
+        }
     }
     if (keyIsDown(UP_ARROW) || keyIsDown(87)) {
-        y = y - 1 * yMod;
+        if (y > -690) {
+            y = y - 1 * yMod;
+        }
     }
     if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {
-        y = y + 1 * yMod;
+        if (y < 20) {
+            y = y + 1 * yMod;
+        }
     }
-    if (x > 730 / 2) {
-        x = 730 / 2;
+
+    //collision checker
+    if (x < boxPos.x1 - initialX + boxSize * hitboxMod && x > boxPos.x1 - initialX - boxSize * hitboxMod && y + 15 < boxPos.y1 - initialY + boxSize * hitboxMod + boxPos.z1 && y + 15 > boxPos.y1 - initialY - boxSize * hitboxMod + boxPos.z1) { 
+        text('Crash', 50, 50);
     }
 }
