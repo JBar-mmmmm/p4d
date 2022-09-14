@@ -10,7 +10,7 @@ function setup() {
 }
 
 function draw() {
-    function Logo(dx, dy, scaleVal, sWeight) {
+    function Logo(dx, dy, scaleVal, sWeight) { //move this outside draw
         scale(scaleVal);
         strokeWeight(sWeight);
         ellipseMode(RADIUS);

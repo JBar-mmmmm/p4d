@@ -1,24 +1,36 @@
 /*
-    Paste the code for your week 3 exercise below.
+    Paste the code for your week 6 exercise below.
 */
 function setup() {
     createCanvas(750, 750);
     frameRate(60);
 }
 
-let initialX = 750 / 2;
-let initialY = 700;
-let x = 0;
-let y = 0;
-let xMod = 2;
-let yMod = 2;
-let boxPos = {
-    x1: 300 / 2,
-    y1: 300 / 2,
-    z1: 0, //y displacement 
-}
+let initialX = 750 / 2; //ship starting x position
+let initialY = 700; //ship starting y position
+let x = 0; //relative ship x from initial 
+let y = 0; //relative ship y from initial
+let xMod = 2; //ship x mod
+let yMod = 2; //ship y mod
+let zMod = 1; //box displacement rate mod
 let boxSize = 50;
-let hitboxMod = 4 / 5;
+let hitboxMod = 4 / 5; //box hitbox size mod
+
+//randomise box x position on spawn
+let xValue0Array = [50, 375, 500];
+let xValue1Array = [150, 475, 600];
+let xValue2Array = [250, 575, 700];
+let xValue0Random = 150;
+// let xValue1 = random(200, 300);
+// let xValue2 = random(400, 500);
+
+
+let boxPos = {
+    x: [xValue0Random, 300, 600], //x position
+    y: [-50, -300, 0], //y starting position (staggered for different timings)
+    z: [0, 0, 0], //y displacement 
+}
+
 
 function draw() {
     ship();
@@ -26,12 +38,27 @@ function draw() {
 
 function ship() {
     background('white');
-    rectMode(CENTER);
-    rect(boxPos.x1, boxPos.y1 + boxPos.z1, boxSize);
-    triangle(initialX + x, initialY + y, initialX + 15 + x, initialY + 30 + y, initialX - 15 + x, initialY + 30 + y);
 
-    //box falling
-    boxPos.z1 = boxPos.z1 +1;
+    //boxes & game speed
+    rectMode(CENTER);
+    for(i = 0; i < 3; i = i + 1) {
+        rect(boxPos.x[i], boxPos.y[i] + boxPos.z[i], boxSize);
+        if (boxPos.z[i] > 800 - boxPos.y[i]) {
+            boxPos.z[i] = 0;
+            if (zMod < 10) { //speed control
+                xMod = xMod + 1 / 5;
+                yMod = yMod + 1 / 5;
+                zMod = zMod + 2 / 5;
+
+            }
+            xValue0Random = random(xValue0Array);
+
+        }
+        boxPos.z[i] = boxPos.z[i] + 1 * zMod;
+    }
+
+    //ship
+    triangle(initialX + x, initialY + y, initialX + 15 + x, initialY + 30 + y, initialX - 15 + x, initialY + 30 + y);
 
     //movement
     if (keyIsDown(LEFT_ARROW) || keyIsDown(65)) {
@@ -56,7 +83,9 @@ function ship() {
     }
 
     //collision checker
-    if (x < boxPos.x1 - initialX + boxSize * hitboxMod && x > boxPos.x1 - initialX - boxSize * hitboxMod && y + 15 < boxPos.y1 - initialY + boxSize * hitboxMod + boxPos.z1 && y + 15 > boxPos.y1 - initialY - boxSize * hitboxMod + boxPos.z1) { 
-        text('Crash', 50, 50);
+    for(i = 0; i < 3; i = i + 1) {
+        if (x < boxPos.x[i] - initialX + boxSize * hitboxMod && x > boxPos.x[i] - initialX - boxSize * hitboxMod && y + 15 < boxPos.y[i] - initialY + boxSize * hitboxMod + boxPos.z[i] && y + 15 > boxPos.y[i] - initialY - boxSize * hitboxMod + boxPos.z[i]) { 
+            text('Crash', 50, 50);
+        }
     }
 }
