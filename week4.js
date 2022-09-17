@@ -1,8 +1,9 @@
 /*
     Paste the code for your week 4 exercise below.
 */
+let tFont;
 function preload() {
-   //let tFont = loadFont('assets/FunctionPro-Bold-webfont.ttf');
+   tFont = loadFont('https://dl.dropboxusercontent.com/s/eme3ypncrpuqfg6/AzoSans-Regular.ttf?dl=0');
 }
 
 function setup() {
@@ -100,19 +101,24 @@ function Logo(dx, dy, scaleVal, sWeight) {
     line(200 + dx, cEdgeLength + dy, 205 + dx, 5 * 733 / 310 + cEdgeLength + dy);
 
     //text
+    rectMode(CENTER);
+    fill('white');
+    noStroke();
+    rect(210 + dx, 450 + dy - 13 * scaleVal, scaleVal * 450, scaleVal * 31);
+    rect(210 + dx, 530 + dy - 34 * scaleVal, scaleVal * 630, scaleVal * 75);
+    rect(210 + dx, 570 + dy - 13 * scaleVal, scaleVal * 220, scaleVal * 31);
+
     let t = ["ENGINEERING DISCOVERY", "CLOVIS BRAY", "EXOSCIENCE"];
     textAlign(CENTER);
-    //textFont(tFont);
-    textFont('Helvetica');
-    noStroke();
-    textSize(scaleVal * 30);
+    textFont(tFont);
+    textSize(scaleVal * 35);
     fill(0);
     text(t[0], 210 + dx, 450 + dy);
     textSize(scaleVal * 95);
     fill(142 ,201 ,215);
     text(t[1], 210 + dx, 530 + dy);
-    textSize(scaleVal * 30);
+    textSize(scaleVal * 35);
     fill(0);
     text(t[2], 210 + dx, 570 + dy);
-    Stroke();
+    stroke('black');
 }

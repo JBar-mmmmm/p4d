@@ -8,10 +8,10 @@ function setup() {
 
 let initialX = 750 / 2; //ship starting x position
 let initialY = 700; //ship starting y position
-let x = 0; //relative ship x from initial 
-let y = 0; //relative ship y from initial
-let xMod = 2; //ship x mod
-let yMod = 2; //ship y mod
+let x = 0; //relative x pos of ship from initial 
+let y = 0; //relative y pos of ship from initial
+let xMod = 2; //ship x vel mod
+let yMod = 2; //ship y vel mod
 let zMod = 1; //box displacement rate mod
 let boxSize = 50;
 let hitboxMod = 4 / 5; //box hitbox size mod
@@ -21,8 +21,6 @@ let xValue0Array = [50, 375, 500];
 let xValue1Array = [150, 475, 600];
 let xValue2Array = [250, 575, 700];
 let xValue0Random = 150;
-// let xValue1 = random(200, 300);
-// let xValue2 = random(400, 500);
 
 
 let boxPos = {
@@ -49,10 +47,7 @@ function ship() {
                 xMod = xMod + 1 / 5;
                 yMod = yMod + 1 / 5;
                 zMod = zMod + 2 / 5;
-
             }
-            xValue0Random = random(xValue0Array);
-
         }
         boxPos.z[i] = boxPos.z[i] + 1 * zMod;
     }
