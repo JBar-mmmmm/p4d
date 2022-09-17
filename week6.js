@@ -98,12 +98,12 @@ function ship() {
     //collision checker
     for(i = 0; i < 3; i = i + 1) {
         if (x < boxPos.x[i] - initialX + boxSize * hitboxMod && x > boxPos.x[i] - initialX - boxSize * hitboxMod && y + 15 < boxPos.y[i] - initialY + boxSize * hitboxMod + boxPos.z[i] && y + 15 > boxPos.y[i] - initialY - boxSize * hitboxMod + boxPos.z[i]) { 
-            reset();
+            resetPos();
         }
     }
 }
 
-function reset() {
+function resetPos() {
     x = 0;
     y = 0;
     xMod = 2;
