@@ -15,6 +15,9 @@ let yMod = 2; //ship y vel mod
 let zMod = 1; //box displacement rate mod
 let boxSize = 50; //50
 let hitboxMod = 4 / 5; //box hitbox size mod
+let score = 0;
+let lastScore = 0;
+let highScore = 0;
 
 //randomise box x position on spawn
 let boxPos = {
@@ -44,9 +47,15 @@ function ship() {
             }
             boxPos.x[i] = random(boxPos.xRespawn[i]); //randomised box x pos on respawn
             boxPos.y[i] = random(-200, -20); //randomised box y pos on repsawn
+            score = score + 1;
         }
         boxPos.z[i] = boxPos.z[i] + 1 * zMod;
     }
+
+    //score display
+    text('High Score ' + highScore, 50, 30);
+    text('Last Score ' + lastScore, 50, 40);
+    text('Score ' + score, 50, 50);
 
     //ship
     triangle(initialX + x, initialY + y, initialX + 15 + x, initialY + 30 + y, initialX - 15 + x, initialY + 30 + y);
@@ -76,7 +85,22 @@ function ship() {
     //collision checker
     for(i = 0; i < 3; i = i + 1) {
         if (x < boxPos.x[i] - initialX + boxSize * hitboxMod && x > boxPos.x[i] - initialX - boxSize * hitboxMod && y + 15 < boxPos.y[i] - initialY + boxSize * hitboxMod + boxPos.z[i] && y + 15 > boxPos.y[i] - initialY - boxSize * hitboxMod + boxPos.z[i]) { 
-            text('Crash', 50, 50);
+            //reset
+            reset();
         }
     }
+}
+
+function reset() {
+    x = 0;
+    y = 0;
+    xMod = 2;
+    yMod = 2;
+    zMod = 1;
+    lastScore = score;
+    if (lastScore > highScore) {
+        highScore = lastScore;
+    }
+    score = 0;
+    boxPos.z = [0, 0, 0];
 }
