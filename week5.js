@@ -27,7 +27,7 @@ function boxes(xOffset, yOffset, boxSize) {
         colour = random(a);
     } else if(arrayCycle == 2) { //cycle 3
         colour = random(c);
-    } else { //cycle 1 & 3
+    } else { //cycle 2 & 4
         colour = random(b);
     }
     fill(colour);
