@@ -1,0 +1,56 @@
+body {
+    width: 750px;
+    margin: 0 auto;
+}
+.bodyWk5 {
+    width: 760px;
+}
+
+/* text */
+h1,
+h2 {
+    font-family: oswald, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+h1 {
+    font-size: 2rem;
+    padding-top: 2rem;
+}
+h2 {
+    font-size: 1.2rem;
+}
+p, 
+a {
+    font-family: acumin-pro, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+}
+p {
+    padding-left: 1rem;
+}
+.pHome,
+a {
+    font-size: 1.4rem;
+    padding-top: 0.5rem;
+}
+a {
+    color: #333
+}
+a:visited {
+    color: #777;
+}
+a:hover {
+    color: #555;
+}
+a:active {
+    color: #999
+}
+ul {
+    padding-top: 1rem;
+}
+li {
+    padding-top: 1rem;
+    padding-left: 1rem;
+}
